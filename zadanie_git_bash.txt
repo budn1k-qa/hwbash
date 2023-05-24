@@ -1,0 +1,89 @@
+Задание 1
+Предусловия:
+Установлен git bash или VScode
+Создайте профиль в github
+Выполненное задание сохраните в виде файла txt с каждым запросом.
+Не забудьте добавить его в отдельный репозиторий на github и обновить ваше портфолио
+
+Ваша задача:
+
+   Определить имя папки, в которой вы находитесь - $ pwd (/s/IT/Git/hwbash)
+                    Создать папку с именем test1 - $ mkdir test1
+                           Перейти в папку test1 - $ cd test1
+      Создать файл 1,2 и 3 внутри каталога test1 - $ touch 1.txt 2.txt 3.txt
+             Проверить содержимое каталога test1 - $ ls (1.txt  2.txt  3.txt)
+  Создать папку test2 внутри домашней директории - $ cd /s/IT/Git/hwbash
+(Если директория по умолчанию users/username, то cd ~ , но мы не ищем легких путей :))
+                                                 - $ mkdir test2
+                             Удалить папку test2 - $ rmdir test2
+                                  Удалить файл 2 - $ cd test1
+                                                   $ rm 2.txt
+  Создать папку test3 и добавить в нее два файла - $ mkdir test3
+                                                   $ cd test3
+                                                   $ touch {4,5}.txt
+                             Удалить папку test3 - $ cd - (/s/IT/Git/hwbash/test1) или можно cd ..
+                                                   $ rm -rf test3
+                             Создать папку test4 - $ mkdir test4
+           Переместить файлы 1 и 3 в папку test4 - $ mv 1.txt 3.txt test4
+    Добавить в файл 1 три строки со словами line - $ cd test4
+                                                   $ echo first line > 1.txt
+                                                   $ echo second line >> 1.txt
+                                                   $ echo third line >> 1.txt
+                   Посмотреть содержимое файла 1 - $ cat 1.txt
+    Добавьте в файл 3 три строки со словами line - $ echo line1 > 3.txt
+                                                   $ echo line2 >> 3.txt
+                                                   $ echo line3 >> 3.txt
+Просмотрите содержимое двух файлов (1 и 3) сразу - $ cat 1.txt 3.txt
+Используя один из редакторов замените все строки - $ nano 1.txt  (можно все удалить, написать новые cтроки,
+ он напишет Wrote 3 lines - нажимаем ctrl+x для выхода. Спросит сохранить: Yes/No/Cancel. click Y. Enter. 
+ проверяем результат - $cat 1.txt Все ок.
+                                                   $ nano 3.txt - все то же самое. ЛИБО! Открыл сразу два файла в нано.
+ для переключения между ними используется alt+< alt+> , но у меня почему то эти команды не работают на винде.
+ Зато, заменив строки в первом файле, мы его закрываем - сохраняем, и не выходя из редактора нам открывается
+ второй файл. Так же его редактируем, сохраняем, выходим теперь уже в терминал, проверяем содержимое через cat - it's ok)
+
+==========================================================================================================
+
+Задание 2
+Предусловия:
+Установлен git bash или VScode
+Создайте профиль в github
+Выполненное задание сохраните в виде файла txt с каждым запросом
+Не забудьте добавить его в отдельный репозиторий на github и обновить ваше портфолио
+
+Ваша задача:
+
+Создать папку test 3 - $ mkdir test_3
+Добавить в него три файла 4, 5 и 6, в каждом из которых должно быть по 4 строки row1, row2, row3, row4 - $ cd test_3
+$ nano 4.txt 5.txt 6.txt - в редакторе в первом файле прописал строки, скопировал и таким образом создал еще два файла.
+Найдите строку row2 в файле 5 - $ grep -i "row2" 5.txt
+Найдите строку row в папке test3 - $ grep -R "row"
+Посчитайте сколько строк с содержимым row в файле 6 - $ grep "row" 6.txt | wc -l 
+Найдите файл 5 внутри папки test3 - $ find -name "5.txt" ($ find . -name "5.txt" - результат такой же)
+Используя команду find, удалите файл 5 - $ find -name "5.txt" -delete
+Используя команду echo, добавьте слово test в файл 4 - $ echo test >> 4.txt
+Замените слово test в файле 4 на fail - $ sed -i 's/test/fail/g' 4.txt
+Добавьте в файл 4 слово test так, чтобы сохранилось содержимое - $ echo test >> 4.txt
+Просмотрите все процессы для юзеров не только в консоли, которые происходят в системе - $ ps aux
+Убейте процесс 666 в консоли - $ kill 666
+Узнайте доступность ресурса artsiomrusau.com, используя ping - $ ping artsiomrusau.com
+Отправьте 5 пакетов на сайт artsiomrusau.com - $ ping -n 5 artsiomrusau.com (в винде n вместо с)
+
+Используя GET и команду curl, получите информацию о зарегистрированных питомцах на https://petstore.swagger.io/ - 
+$ curl -X GET https://petstore.swagger.io/v2/pet/findByStatus?status=available
+
+Используя POST и команду curl, создайте нового пользователя на https://petstore.swagger.io/
+$ curl -X POST -H "Content-Type: application/json" --data '{
+  "id": 100,
+  "username": "dogger",
+  "firstName": "Jojua",
+  "lastName": "Delover",
+  "email": "delover@gmail.com",
+  "password": "qwerty",
+  "phone": "11113344555"
+}' https://petstore.swagger.io/v2/user
+{"code":200,"type":"unknown","message":"100"}
+
+$ curl -X GET https://petstore.swagger.io/v2/user/dogger
+{"id":100,"username":"dogger","firstName":"Jojua","lastName":"Delover","email":"delover@gmail.com","password":"qwerty",
+"phone":"11113344555","userStatus":0}
